@@ -16,7 +16,7 @@
  - Java 1.8 (jdk1.8.0_161)
  - Spring Framework 4.0.1.RELEASE
  - Hibernate 4.3.1.Final
- - JDBC PostgreSQL (9.4.1209.jre7)
+ - Driver for PostgreSQL (9.4.1209.jre7)
  - Gson 2.8.2 (Conversion to Json)
  - jQuery-DataTables (Pagination)
  - commons-fileupload (Used to upload file)
