@@ -6,6 +6,7 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -14,6 +15,8 @@ import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 import org.springframework.stereotype.Component;
 
 @Entity
@@ -48,7 +51,9 @@ public class Author implements Serializable {
     @OneToOne(mappedBy = "author", cascade = CascadeType.ALL)
     private UserSys usersys;
     
-    @OneToMany(mappedBy = "author", cascade = CascadeType.ALL)
+    //@OneToMany(mappedBy = "author", cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.REFRESH, fetch = FetchType.EAGER)
+    @Fetch(FetchMode.SUBSELECT)
     private List<Post> posts;
     
     public Author() {

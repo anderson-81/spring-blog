@@ -41,36 +41,22 @@ public class Alert {
                 text = "Invalid username and password.";
             }
             if (method == 4) {
-                text = "Unsuccessfully logged out.";
+                text = "Error logout.";
+            }
+            if (method == 5) {
+                text = "Error logging in.";
+            }
+            if (method == 6) {
+                text = "Error listing posts.";
+            }
+            if (method == 7) {
+                text = "Post not found.";
+            }
+            if (method == 8) {
+                text = "Error showing post.";
             }
         }
 
-        StringBuilder stb = new StringBuilder();
-        
-        stb.append("<script src=\"../../../resources/js/jquery.min.js\" type=\"text/javascript\"></script>");
-        stb.append("<script src=\"../../../resources/js/bootstrap.bundle.min.js\" type=\"text/javascript\"></script>");
-
-        stb.append("<div id=\"modalInfo\" class=\"modal fade\" style=\"color:black;\" role=\"dialog\">");
-        stb.append("<div class=\"modal-dialog\">");
-        stb.append("<div class=\"modal-content\">");
-        stb.append("<div class=\"modal-header\">");
-        stb.append("<button type=\"button\" class=\"close\" data-dismiss=\"modal\">&times;</button>");
-        stb.append("<h4 class=\"modal-title\">");
-        //stb.append(title);
-        stb.append("</h4>");
-        stb.append("</div>");
-        stb.append("<div class=\"modal-body\">");
-        stb.append("<p>");
-        stb.append(text);
-        stb.append("</p>");
-        stb.append("</div>");
-        stb.append("<div class=\"modal-footer\">");
-        stb.append("<button type=\"button\" class=\"btn btn-danger\" data-dismiss=\"modal\">Ok</button>");
-        stb.append("</div>");
-        stb.append("</div>");
-        stb.append("</div>");
-        stb.append("</div>");
-        stb.append("<script>$(\"#modalInfo\").modal(\"show\");</script>");
-        return stb.toString();
+        return text;
     }
 }

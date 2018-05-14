@@ -13,6 +13,9 @@
     <property name="show_sql">true</property>
     <property name="format_sql">false</property>
     <property name="hbm2ddl.auto">update</property>
+    <property name="current_session_context_class">thread</property>
+    <property name="cache.provider_class">org.hibernate.cache.internal.NoCacheProvider</property>
+    <property name="hibernate.connection.autoReconnect">true</property>
         
     <mapping class="com.springblog.models.Author"></mapping>
     <mapping class="com.springblog.models.UserSys"></mapping>

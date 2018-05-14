@@ -1,5 +1,6 @@
 package com.springblog.services.daos;
 
+import com.springblog.dtos.PostDTO;
 import java.util.Calendar;
 import java.util.List;
 import org.hibernate.HibernateException;
@@ -8,6 +9,7 @@ import org.hibernate.Session;
 import com.springblog.services.connections.ConnectionSession;
 import com.springblog.models.Author;
 import com.springblog.models.Post;
+import org.hibernate.transform.Transformers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -28,6 +30,7 @@ public class PostDAO {
                 if (session != null) {
                     post.setDatePost(Calendar.getInstance().getTime());
                     post.setAuthor(author);
+                    post.setDateUpdate(null);
                     session.save(post);
                     session.beginTransaction().commit();
                     session.close();
@@ -118,7 +121,8 @@ public class PostDAO {
         try {
             Session session = connectionSession.OpenSession();
             if (session != null) {
-                List<Post> posts = session.createQuery("from Post where title LIKE :title").setParameter("title", title + '%').list();
+                //List<Post> posts  = session.createSQLQuery("select p.id as id, p.title as title, p.briefing as briefing, p.text as text, p.datepost as datepost, p.dateupdate as dateupdate from Post p where title LIKE :title").setParameter("title", title + '%').setResultTransformer(Transformers.aliasToBean(Post.class)).list();
+                List<Post> posts  = session.createSQLQuery("select p.id, p.title, p.briefing, p.text, p.datepost, p.dateupdate, a.name from Post p INNER JOIN Author a ON p.author_id = a.id where title LIKE :title").setParameter("title", title + '%').setResultTransformer(Transformers.aliasToBean(PostDTO.class)).list();
                 session.close();
                 return posts;
             }

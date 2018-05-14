@@ -43,16 +43,30 @@ public class Post implements Serializable {
     
     @Column(name = "DATEPOST", nullable = false)
     @Temporal(javax.persistence.TemporalType.TIMESTAMP)
-    private Date datePost;
+    private Date datepost;
     
     @Column(name = "DATEUPDATE", nullable = true)
     @Temporal(javax.persistence.TemporalType.TIMESTAMP)
-    private Date dateUpdate;
+    private Date dateupdate;
 
     @ManyToOne
     @JoinColumn(name = "AUTHOR_ID")
     private Author author;
+
+    public Post(int id, String title, String briefing, String text, byte[] picture, Date datepost, Date dateupdate, Author author) {
+        this.id = id;
+        this.title = title;
+        this.briefing = briefing;
+        this.text = text;
+        this.picture = picture;
+        this.datepost = datepost;
+        this.dateupdate = dateupdate;
+        this.author = author;
+    }
     
+    public Post(){
+    }
+
     public int getId() {
         return id;
     }
@@ -102,18 +116,18 @@ public class Post implements Serializable {
     }
     
     public Date getDatePost() {
-        return datePost;
+        return datepost;
     }
 
-    public void setDatePost(Date datePost) {
-        this.datePost = datePost;
+    public void setDatePost(Date datepost) {
+        this.datepost = datepost;
     }
 
     public Date getDateUpdate() {
-        return dateUpdate;
+        return dateupdate;
     }
 
-    public void setDateUpdate(Date dateUpdate) {
-        this.dateUpdate = dateUpdate;
+    public void setDateUpdate(Date dateupdate) {
+        this.dateupdate = dateupdate;
     }
 }

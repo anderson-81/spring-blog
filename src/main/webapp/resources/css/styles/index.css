@@ -13,3 +13,5 @@ a:hover {
 a:active {
     text-decoration: none;
 }
+.post-meta{font-size:18px;font-style:italic;margin-top:0;color:#138496;}
+.post-title{font-size:30px;margin-top:30px;margin-bottom:10px;}

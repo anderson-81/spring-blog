@@ -21,7 +21,7 @@ public class ValidationData {
     }
 
     private void ValidationTitle(String title) {
-        if (title.equals("")) {
+        if (title == null || title.equals("")) {
             this.list_errors.add("Title is empty.");
         } else {
             if (title.length() < 10) {
@@ -31,7 +31,7 @@ public class ValidationData {
     }
 
     private void ValidationBriefing(String briefing) {
-        if (briefing.equals("")) {
+        if (briefing == null || briefing.equals("")) {
             this.list_errors.add("Briefing is empty.");
         } else {
             if (briefing.length() < 15) {
@@ -41,7 +41,7 @@ public class ValidationData {
     }
 
     private void ValidationText(String text) {
-        if (text.equals("")) {
+        if (text == null || text.equals("")) {
             this.list_errors.add("Text is empty.");
         } else {
             if (text.length() < 50) {
@@ -68,13 +68,13 @@ public class ValidationData {
     }
 
     private void ValidationUsername(String username) {
-        if (username.equals("")) {
+        if (username == null || username.equals("")) {
             this.list_errors.add("Username is empty.");
         }
     }
 
     private void ValidationPassword(String userpass) {
-        if (userpass.equals("")) {
+        if (userpass == null || userpass.equals("")) {
             this.list_errors.add("Password is empty.");
         }
     }
