@@ -51,6 +51,3 @@ and Hibernate with PostgreSQL database.
 
 ### 3.8 - IDE:
 - NetBeans 8.2
-
-
-
