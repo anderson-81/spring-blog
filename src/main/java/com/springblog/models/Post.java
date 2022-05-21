@@ -2,8 +2,10 @@ package com.springblog.models;
 
 import java.io.Serializable;
 import java.util.Date;
+import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -39,12 +41,13 @@ public class Post implements Serializable {
 
     @Lob
     @Column(name = "PICTURE", nullable = true)
+    @Basic(fetch = FetchType.LAZY, optional = false)
     private byte[] picture;
-    
+
     @Column(name = "DATEPOST", nullable = false)
     @Temporal(javax.persistence.TemporalType.TIMESTAMP)
     private Date datepost;
-    
+
     @Column(name = "DATEUPDATE", nullable = true)
     @Temporal(javax.persistence.TemporalType.TIMESTAMP)
     private Date dateupdate;
@@ -63,8 +66,8 @@ public class Post implements Serializable {
         this.dateupdate = dateupdate;
         this.author = author;
     }
-    
-    public Post(){
+
+    public Post() {
     }
 
     public int getId() {
@@ -106,7 +109,7 @@ public class Post implements Serializable {
     public void setPicture(byte[] picture) {
         this.picture = picture;
     }
-    
+
     public Author getAuthor() {
         return author;
     }
@@ -114,7 +117,7 @@ public class Post implements Serializable {
     public void setAuthor(Author author) {
         this.author = author;
     }
-    
+
     public Date getDatePost() {
         return datepost;
     }

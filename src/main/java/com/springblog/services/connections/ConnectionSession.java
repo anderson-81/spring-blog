@@ -10,16 +10,21 @@ import org.springframework.stereotype.Service;
 @Service
 public class ConnectionSession {
 
+    private static Configuration configuration = null;
+    private static SessionFactory factory = null;
+
     public Session OpenSession() {
-        try {
-            Configuration configuration = new Configuration().configure();
-            StandardServiceRegistryBuilder builder = new StandardServiceRegistryBuilder().
-                    applySettings(configuration.getProperties());
-            SessionFactory factory = configuration.buildSessionFactory(builder.build());
-            return factory.openSession();
-        } catch (HibernateException e) {
-            System.out.println(e.getMessage());
-            return null;
+
+        if (configuration == null) {
+            try {
+                configuration = new Configuration().configure();
+                StandardServiceRegistryBuilder builder = new StandardServiceRegistryBuilder().applySettings(configuration.getProperties());
+                factory = configuration.buildSessionFactory(builder.build());
+            } catch (HibernateException e) {
+                System.out.println(e.getMessage());
+                return null;
+            }
         }
+        return factory.openSession();
     }
 }
